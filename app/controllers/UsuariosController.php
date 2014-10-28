@@ -10,7 +10,8 @@ class UsuariosController extends BaseController {
 	 */
 	public function index()
 	{
-		//
+		$id=Auth::id();
+		return Redirect::route('usuarios.show',[$id]);
 	}
 
 	/**
@@ -131,5 +132,11 @@ class UsuariosController extends BaseController {
 			// var_dump("GOLA");
 			return Redirect::route('Usuraios.login')->with('error', Lang::get('messages.wrong_credentials'))->withInput();
 		}
+	}
+
+	public function logout()
+	{
+		Auth::logout();
+		return Redirect::route('login')->with('error', 'Has cerrado sesión exitosamente');
 	}
 }

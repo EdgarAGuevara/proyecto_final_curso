@@ -32,4 +32,5 @@
 		</fieldset>
 	</fieldset>
 	{{Form::close()}}
+	<a href="{{ route('usuarios.create') }}">Crear un usuario nuevo</a>
 @stop

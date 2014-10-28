@@ -7,7 +7,6 @@
 @section('header')
 	@parent
 	<h2></h2>
-	<a href="{{route('logout')}}">Cerrar sesión</a>
 @stop
 
 @section('header_title') 
@@ -16,9 +15,12 @@
 @stop
 
 @section('content')
-	<a href="{{ route('usuarios.index') }}">Volver al Inicio</a>
 	<br>
-	<a href="{{-- route('contactos.index') --}}">Lista de Contactos</a>
+	<a href="{{route('usuarios.index') }}">Lista de Contactos</a>
 	<br>
 	<a href="{{route('contactos.create',array($user->id)) }}">Nuevo Contacto</a>
+	<br>
+	<a href="{{route('logout')}}">Cerrar sesión</a>
+	<br>
+	<a href="{{ route('usuarios.index') }}">Volver al Inicio</a>
 @stop
