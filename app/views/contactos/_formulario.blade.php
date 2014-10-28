@@ -35,7 +35,7 @@
 		{{Form::label('address','Direccion: ')}}
 		{{Form::textarea('address',$contacto->address)}}
 </fieldset>
-{{Form::hidden('usuario_id',$user->id)}}
+{{Form::hidden('usuario_id',$contacto->usuario->id)}}
 
 <fieldset>
 	{{Form::submit()}}

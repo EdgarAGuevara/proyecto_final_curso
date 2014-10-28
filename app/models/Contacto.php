@@ -36,6 +36,6 @@ class Contacto extends Ardent /*implements UserInterface, RemindableInterface*/ 
 	/*Este modelo recibe UN "usuario" osea model "Usuario" */
 	public function usuario()
 	{
-		return $this->belongsTo('Usuario','usuario_id');
+		return $this->belongsTo('Usuario');
 	}
 }

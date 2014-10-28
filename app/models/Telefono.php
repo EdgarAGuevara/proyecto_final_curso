@@ -24,6 +24,6 @@ class Telefono extends Ardent /*implements UserInterface, RemindableInterface*/ 
 	/*Este modelo recibe UN contacto osea el modelo "Contacto" */
 	public function contacto()
 	{
-		return $this->belongsTo('Contacto');
+		return $this->belongsTo('Contacto','id');
 	}
 }

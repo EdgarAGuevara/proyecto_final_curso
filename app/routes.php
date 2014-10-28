@@ -36,3 +36,9 @@ Route::get('/contactos/create/{id}',array('as' =>'contactos.create' ,'uses' =>'C
 
 Route::resource('contactos', 'ContactosController', array('except' => array('create')));
 /*Seccion recurso de contacto*/
+
+/*Seccion recurso de telefono*/
+Route::get('/telefonos/create/{id}',array('as' =>'telefonos.create' ,'uses' =>'TelefonosController@create'));
+
+Route::resource('telefonos', 'TelefonosController', array('except' => array('create')));
+/*Seccion recurso de telefono*/

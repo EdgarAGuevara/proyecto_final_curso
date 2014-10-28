@@ -78,7 +78,12 @@ class ContactosController extends BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		$contacto = Contacto::find($id);
+		if($contacto){
+			return View::make('contactos.edit', array('contacto' => $contacto));
+		}else{
+			Throw new NotFoundHttpException;
+		}
 	}
 
 	/**
@@ -90,7 +95,21 @@ class ContactosController extends BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$contacto = Contacto::find($id);
+		if($contacto){
+			$contacto->name = Input::get('name');
+			$contacto->last_name = Input::get('last_name');
+			$contacto->email = Input::get('email');
+			$contacto->address = Input::get('address');
+			$contacto->usuario_id = Input::get('usuario_id');
+			if($contacto->updateUniques()){
+				return Redirect::route('contactos.show', array($id));
+			}else{
+				return Redirect::route('contactos.edit', array($contacto->contacto_id))->withErrors($user->errors());
+			}
+		}else{
+			Throw new NotFoundHttpException;	
+		}
 	}
 
 	/**
@@ -102,7 +121,17 @@ class ContactosController extends BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		$contacto = Contacto::find($id);
+		$id_usuario=$contacto->usuario_id;
+		if($contacto){
+			if($contacto->delete()){
+				return Redirect::route('usuarios.show', array($id_usuario));
+			}else{
+				App::abort(500);
+			}
+		}else{
+			Throw new NotFoundHttpException;
+		}
 	}
 
 }
